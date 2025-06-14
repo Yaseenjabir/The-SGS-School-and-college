@@ -10,15 +10,12 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
+  // Simplified navigation with only important pages
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Academic', path: '/academic' },
     { name: 'Admissions', path: '/admissions' },
-    { name: 'Facilities', path: '/facilities' },
-    { name: 'Activities', path: '/activities' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'News', path: '/news' },
     { name: 'Contact', path: '/contact' },
   ];
 

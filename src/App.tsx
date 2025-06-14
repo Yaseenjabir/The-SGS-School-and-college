@@ -19,7 +19,6 @@ import Activities from "./pages/Activities";
 import Calendar from "./pages/Calendar";
 import Testimonials from "./pages/Testimonials";
 import Gallery from "./pages/Gallery";
-import News from "./pages/News";
 import FAQ from "./pages/FAQ";
 import Principal from "./pages/Principal";
 import Alumni from "./pages/Alumni";
@@ -59,7 +58,6 @@ const App = () => {
                 <Route path="/calendar" element={<Calendar />} />
                 <Route path="/testimonials" element={<Testimonials />} />
                 <Route path="/gallery" element={<Gallery />} />
-                <Route path="/news" element={<News />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/principal" element={<Principal />} />
                 <Route path="/alumni" element={<Alumni />} />
