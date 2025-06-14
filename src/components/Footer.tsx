@@ -4,7 +4,7 @@ import { GraduationCap, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtu
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-blue-900 via-purple-900 to-blue-800 text-white">
+    <footer className="bg-gradient-to-br from-red-900 via-orange-900 to-red-800 text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* School Info */}
@@ -15,14 +15,14 @@ const Footer = () => {
               </div>
               <h3 className="text-xl font-bold font-nunito">Bright Future School</h3>
             </div>
-            <p className="text-blue-100 text-sm leading-relaxed">
+            <p className="text-red-100 text-sm leading-relaxed">
               Nurturing young minds and building bright futures since 1985. We provide quality education from Nursery to 12th grade.
             </p>
             <div className="flex space-x-4">
-              <Facebook className="h-5 w-5 text-blue-200 hover:text-white cursor-pointer transition-colors" />
-              <Twitter className="h-5 w-5 text-blue-200 hover:text-white cursor-pointer transition-colors" />
-              <Instagram className="h-5 w-5 text-blue-200 hover:text-white cursor-pointer transition-colors" />
-              <Youtube className="h-5 w-5 text-blue-200 hover:text-white cursor-pointer transition-colors" />
+              <Facebook className="h-5 w-5 text-red-200 hover:text-white cursor-pointer transition-colors" />
+              <Twitter className="h-5 w-5 text-red-200 hover:text-white cursor-pointer transition-colors" />
+              <Instagram className="h-5 w-5 text-red-200 hover:text-white cursor-pointer transition-colors" />
+              <Youtube className="h-5 w-5 text-red-200 hover:text-white cursor-pointer transition-colors" />
             </div>
           </div>
 
@@ -40,7 +40,7 @@ const Footer = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="block text-blue-100 hover:text-white transition-colors text-sm"
+                  className="block text-red-100 hover:text-white transition-colors text-sm"
                 >
                   {link.name}
                 </Link>
@@ -62,7 +62,7 @@ const Footer = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="block text-blue-100 hover:text-white transition-colors text-sm"
+                  className="block text-red-100 hover:text-white transition-colors text-sm"
                 >
                   {link.name}
                 </Link>
@@ -76,22 +76,22 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-yellow-400" />
-                <span className="text-blue-100 text-sm">+1 (555) 123-4567</span>
+                <span className="text-red-100 text-sm">+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-yellow-400" />
-                <span className="text-blue-100 text-sm">info@brightfuture.edu</span>
+                <span className="text-red-100 text-sm">info@brightfuture.edu</span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="h-4 w-4 text-yellow-400 mt-1" />
-                <span className="text-blue-100 text-sm">123 Education Street, Learning City, LC 12345</span>
+                <span className="text-red-100 text-sm">123 Education Street, Learning City, LC 12345</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-blue-800 mt-8 pt-8 text-center">
-          <p className="text-blue-100 text-sm">
+        <div className="border-t border-red-800 mt-8 pt-8 text-center">
+          <p className="text-red-100 text-sm">
             © 2024 Bright Future School. All rights reserved. | 
             <Link to="/careers" className="hover:text-white ml-1">Careers</Link> | 
             <Link to="/alumni" className="hover:text-white ml-1">Alumni</Link>

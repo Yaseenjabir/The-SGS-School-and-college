@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import { Menu, GraduationCap } from 'lucide-react';
 
 const Header = () => {
@@ -24,16 +25,16 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-blue-100 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-red-100 shadow-sm">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
-            <div className="bg-gradient-to-br from-blue-500 to-purple-600 p-2 rounded-xl group-hover:scale-110 transition-transform duration-300">
+            <div className="bg-gradient-to-br from-red-500 to-orange-600 p-2 rounded-xl group-hover:scale-110 transition-transform duration-300">
               <GraduationCap className="h-8 w-8 text-white" />
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-2xl font-bold font-nunito bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold font-nunito bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
                 Bright Future School
               </h1>
               <p className="text-sm text-gray-600">Nurturing Excellence Since 1985</p>
@@ -48,8 +49,8 @@ const Header = () => {
                 to={item.path}
                 className={`px-4 py-2 rounded-lg font-nunito font-medium transition-all duration-300 ${
                   isActive(item.path)
-                    ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg'
-                    : 'text-gray-700 hover:bg-blue-50 hover:text-blue-600'
+                    ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white shadow-lg'
+                    : 'text-gray-700 hover:bg-red-50 hover:text-red-600'
                 }`}
               >
                 {item.name}
@@ -60,27 +61,51 @@ const Header = () => {
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="lg:hidden">
+              <Button variant="outline" size="icon" className="lg:hidden border-red-200 hover:bg-red-50">
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] bg-white">
-              <div className="flex flex-col space-y-4 mt-8">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`px-4 py-3 rounded-lg font-nunito font-medium transition-all duration-300 ${
-                      isActive(item.path)
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-500 text-white'
-                        : 'text-gray-700 hover:bg-blue-50'
-                    }`}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
+            <SheetContent side="right" className="w-[300px] bg-white p-0">
+              <ScrollArea className="h-full">
+                <div className="flex flex-col space-y-2 p-6">
+                  <div className="pb-4 border-b border-red-100">
+                    <div className="flex items-center space-x-3">
+                      <div className="bg-gradient-to-br from-red-500 to-orange-600 p-2 rounded-xl">
+                        <GraduationCap className="h-6 w-6 text-white" />
+                      </div>
+                      <div>
+                        <h2 className="text-lg font-bold font-nunito bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+                          Bright Future School
+                        </h2>
+                        <p className="text-xs text-gray-600">Excellence Since 1985</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={() => setIsOpen(false)}
+                      className={`px-4 py-3 rounded-lg font-nunito font-medium transition-all duration-300 ${
+                        isActive(item.path)
+                          ? 'bg-gradient-to-r from-red-500 to-orange-500 text-white'
+                          : 'text-gray-700 hover:bg-red-50 hover:text-red-600'
+                      }`}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                  
+                  <div className="pt-4 mt-4 border-t border-red-100">
+                    <Link to="/admissions" onClick={() => setIsOpen(false)}>
+                      <Button className="w-full bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white">
+                        Apply Now
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </ScrollArea>
             </SheetContent>
           </Sheet>
         </div>

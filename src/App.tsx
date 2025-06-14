@@ -44,7 +44,7 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <ScrollToTop />
-          <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-purple-50 to-yellow-50">
+          <div className="min-h-screen flex flex-col bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
             <Header />
             <main className="flex-grow">
               <Routes>
