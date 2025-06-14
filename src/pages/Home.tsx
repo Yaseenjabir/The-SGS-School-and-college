@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { useInViewAnimation } from '@/hooks/useInViewAnimation';
 import { 
   GraduationCap, 
   BookOpen, 
@@ -26,20 +27,33 @@ import {
 } from 'lucide-react';
 
 const Home = () => {
+  const heroSection = useInViewAnimation(0.2);
+  const statsSection = useInViewAnimation(0.2);
+  const whyChooseSection = useInViewAnimation(0.2);
+  const principalSection = useInViewAnimation(0.2);
+  const academicSection = useInViewAnimation(0.2);
+  const facilitiesSection = useInViewAnimation(0.2);
+  const achievementsSection = useInViewAnimation(0.2);
+  const studentLifeSection = useInViewAnimation(0.2);
+  const testimonialsSection = useInViewAnimation(0.2);
+  const contactSection = useInViewAnimation(0.2);
+  const quickLinksSection = useInViewAnimation(0.2);
+  const newsSection = useInViewAnimation(0.2);
+
   return (
     <div className="min-h-screen font-nunito">
-      {/* Hero Section - New Education Theme */}
-      <section className="relative py-20 lg:py-32 bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50 overflow-hidden">
+      {/* Hero Section */}
+      <section ref={heroSection.ref} className="relative py-20 lg:py-32 bg-gradient-to-br from-red-50 via-red-25 to-red-50 overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNGNzk3OEEiIGZpbGwtb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSI0Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in">
+            <div className={`transition-all duration-1000 ${heroSection.isInView ? 'animate-fade-in opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="inline-flex items-center bg-red-100 text-red-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
                 <Award className="h-4 w-4 mr-2" />
                 Excellence in Education Since 1985
               </div>
-              <h1 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-red-600 via-red-700 to-red-800 bg-clip-text text-transparent leading-tight">
                 Bright Future School
               </h1>
               <p className="text-xl lg:text-2xl text-gray-700 mb-4 leading-relaxed">
@@ -52,7 +66,7 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-red-500 to-orange-600 hover:from-red-600 hover:to-orange-700 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   <Play className="mr-2 h-5 w-5" />
                   Take Virtual Tour
@@ -81,9 +95,9 @@ const Home = () => {
               </div>
             </div>
             
-            <div className="animate-scale-up relative">
+            <div className={`relative transition-all duration-1000 delay-300 ${heroSection.isInView ? 'animate-scale-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="relative">
-                <div className="bg-gradient-to-br from-red-400 to-orange-500 rounded-3xl p-8 shadow-2xl">
+                <div className="bg-gradient-to-br from-red-400 to-red-500 rounded-3xl p-8 shadow-2xl">
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 text-center">
                       <BookOpen className="h-8 w-8 text-white mx-auto mb-2" />
@@ -122,9 +136,9 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white">
+      <section ref={statsSection.ref} className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="animate-scale-up grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className={`grid grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-1000 ${statsSection.isInView ? 'animate-slide-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {[
               { icon: Users, number: '2,500+', label: 'Happy Students' },
               { icon: BookOpen, number: '150+', label: 'Expert Teachers' },
@@ -133,7 +147,7 @@ const Home = () => {
             ].map((stat, index) => (
               <Card key={index} className="bg-white border-red-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6 text-center">
-                  <div className="bg-gradient-to-br from-red-500 to-orange-600 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <div className="bg-gradient-to-br from-red-500 to-red-600 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3">
                     <stat.icon className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-800 mb-1">{stat.number}</h3>
@@ -146,14 +160,14 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-16 bg-gradient-to-br from-red-50 to-orange-50">
+      <section ref={whyChooseSection.ref} className="py-16 bg-gradient-to-br from-red-50 to-red-100">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-fade-in">
+          <div className={`text-center mb-12 transition-all duration-1000 ${whyChooseSection.isInView ? 'animate-fade-in opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl font-bold text-gray-800 mb-4">Why Choose Bright Future School?</h2>
             <p className="text-xl text-gray-600">Discover what makes us the preferred choice for thousands of families</p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${whyChooseSection.isInView ? 'animate-slide-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {[
               {
                 icon: Shield,
@@ -186,9 +200,9 @@ const Home = () => {
                 description: 'Consistent academic achievements and recognition'
               }
             ].map((feature, index) => (
-              <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-slide-up">
+              <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6 text-center">
-                  <div className="bg-gradient-to-br from-red-500 to-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="bg-gradient-to-br from-red-500 to-red-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <feature.icon className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-800 mb-3">{feature.title}</h3>
@@ -201,13 +215,13 @@ const Home = () => {
       </section>
 
       {/* Principal's Message Preview */}
-      <section className="py-16 bg-white">
+      <section ref={principalSection.ref} className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-gradient-to-br from-red-50 to-orange-50 border-0 shadow-xl overflow-hidden">
+            <Card className={`bg-gradient-to-br from-red-50 to-red-100 border-0 shadow-xl overflow-hidden transition-all duration-1000 ${principalSection.isInView ? 'animate-scale-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <CardContent className="p-8 lg:p-12">
                 <div className="grid lg:grid-cols-2 gap-8 items-center">
-                  <div className="animate-fade-in">
+                  <div>
                     <h2 className="text-3xl font-bold text-gray-800 mb-4">
                       A Message from Our Principal
                     </h2>
@@ -217,15 +231,15 @@ const Home = () => {
                       explore, learn, and grow into confident, responsible citizens..."
                     </p>
                     <Link to="/principal">
-                      <Button className="bg-gradient-to-r from-red-400 to-orange-500 hover:from-red-500 hover:to-orange-600 text-white">
+                      <Button className="bg-gradient-to-r from-red-400 to-red-500 hover:from-red-500 hover:to-red-600 text-white">
                         Read Full Message
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                     </Link>
                   </div>
-                  <div className="animate-scale-up">
+                  <div>
                     <div className="relative">
-                      <div className="bg-gradient-to-br from-red-400 to-orange-500 w-64 h-64 rounded-2xl mx-auto flex items-center justify-center">
+                      <div className="bg-gradient-to-br from-red-400 to-red-500 w-64 h-64 rounded-2xl mx-auto flex items-center justify-center">
                         <GraduationCap className="h-32 w-32 text-white" />
                       </div>
                       <div className="absolute -bottom-4 -right-4 bg-white rounded-xl p-4 shadow-lg">
@@ -246,21 +260,21 @@ const Home = () => {
       </section>
 
       {/* Academic Programs Section */}
-      <section className="py-16 bg-gradient-to-br from-orange-50 to-yellow-50">
+      <section ref={academicSection.ref} className="py-16 bg-gradient-to-br from-red-50 to-red-100">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-fade-in">
+          <div className={`text-center mb-12 transition-all duration-1000 ${academicSection.isInView ? 'animate-fade-in opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Academic Programs</h2>
             <p className="text-xl text-gray-600">Comprehensive education for every stage of development</p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className={`grid md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-1000 delay-300 ${academicSection.isInView ? 'animate-slide-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {[
               { title: 'Nursery', age: '3-4 years', color: 'from-pink-400 to-red-400' },
-              { title: 'Primary', age: '5-10 years', color: 'from-red-400 to-orange-400' },
-              { title: 'Middle School', age: '11-13 years', color: 'from-orange-400 to-yellow-400' },
-              { title: 'High School', age: '14-18 years', color: 'from-yellow-400 to-red-400' }
+              { title: 'Primary', age: '5-10 years', color: 'from-red-400 to-red-500' },
+              { title: 'Middle School', age: '11-13 years', color: 'from-red-500 to-red-600' },
+              { title: 'High School', age: '14-18 years', color: 'from-red-600 to-red-700' }
             ].map((program, index) => (
-              <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-slide-up">
+              <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6 text-center">
                   <div className={`bg-gradient-to-br ${program.color} w-full h-24 rounded-xl mb-4 flex items-center justify-center`}>
                     <BookOpen className="h-10 w-10 text-white" />
@@ -275,14 +289,14 @@ const Home = () => {
       </section>
 
       {/* Facilities Highlight */}
-      <section className="py-16 bg-white">
+      <section ref={facilitiesSection.ref} className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-fade-in">
+          <div className={`text-center mb-12 transition-all duration-1000 ${facilitiesSection.isInView ? 'animate-fade-in opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl font-bold text-gray-800 mb-4">World-Class Facilities</h2>
             <p className="text-xl text-gray-600">State-of-the-art infrastructure for comprehensive learning</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className={`grid md:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${facilitiesSection.isInView ? 'animate-slide-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {[
               { title: 'Smart Classrooms', description: 'Interactive whiteboards and modern teaching aids' },
               { title: 'Science Labs', description: 'Fully equipped physics, chemistry, and biology labs' },
@@ -291,9 +305,9 @@ const Home = () => {
               { title: 'Computer Lab', description: 'Latest technology and coding programs' },
               { title: 'Art Studio', description: 'Creative spaces for artistic expression' }
             ].map((facility, index) => (
-              <Card key={index} className="bg-gradient-to-br from-red-50 to-orange-50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-slide-up">
+              <Card key={index} className="bg-gradient-to-br from-red-50 to-red-100 border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6">
-                  <div className="bg-gradient-to-br from-red-500 to-orange-500 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                  <div className="bg-gradient-to-br from-red-500 to-red-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
                     <MapPin className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-800 mb-3">{facility.title}</h3>
@@ -306,23 +320,23 @@ const Home = () => {
       </section>
 
       {/* Achievements Section */}
-      <section className="py-16 bg-gradient-to-br from-red-50 to-orange-50">
+      <section ref={achievementsSection.ref} className="py-16 bg-gradient-to-br from-red-50 to-red-100">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-fade-in">
+          <div className={`text-center mb-12 transition-all duration-1000 ${achievementsSection.isInView ? 'animate-fade-in opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Achievements</h2>
             <p className="text-xl text-gray-600">Recognition for excellence in education</p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className={`grid md:grid-cols-2 lg:grid-cols-4 gap-6 transition-all duration-1000 delay-300 ${achievementsSection.isInView ? 'animate-slide-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {[
               { title: 'Best School Award', year: '2023', icon: Trophy },
               { title: 'Excellence in Sports', year: '2023', icon: Award },
               { title: 'Academic Excellence', year: '2022', icon: Star },
               { title: 'Green School Certification', year: '2022', icon: Shield }
             ].map((achievement, index) => (
-              <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-slide-up">
+              <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6 text-center">
-                  <div className="bg-gradient-to-br from-red-500 to-orange-500 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="bg-gradient-to-br from-red-500 to-red-600 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <achievement.icon className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">{achievement.title}</h3>
@@ -335,22 +349,22 @@ const Home = () => {
       </section>
 
       {/* Student Life Section */}
-      <section className="py-16 bg-white">
+      <section ref={studentLifeSection.ref} className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-fade-in">
+          <div className={`text-center mb-12 transition-all duration-1000 ${studentLifeSection.isInView ? 'animate-fade-in opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl font-bold text-gray-800 mb-4">Vibrant Student Life</h2>
             <p className="text-xl text-gray-600">Beyond academics - building memories and friendships</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className={`grid md:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${studentLifeSection.isInView ? 'animate-slide-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {[
               { title: 'Cultural Events', description: 'Annual festivals, competitions, and celebrations' },
               { title: 'Sports Activities', description: 'Inter-house competitions and tournaments' },
               { title: 'Field Trips', description: 'Educational excursions and learning adventures' }
             ].map((activity, index) => (
-              <Card key={index} className="bg-gradient-to-br from-orange-50 to-red-50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-slide-up">
+              <Card key={index} className="bg-gradient-to-br from-red-50 to-red-100 border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6">
-                  <div className="bg-gradient-to-br from-orange-500 to-red-500 w-full h-32 rounded-xl mb-4 flex items-center justify-center">
+                  <div className="bg-gradient-to-br from-red-500 to-red-600 w-full h-32 rounded-xl mb-4 flex items-center justify-center">
                     <Users className="h-12 w-12 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold text-gray-800 mb-3">{activity.title}</h3>
@@ -363,14 +377,14 @@ const Home = () => {
       </section>
 
       {/* Parent Testimonials */}
-      <section className="py-16 bg-gradient-to-br from-yellow-50 to-red-50">
+      <section ref={testimonialsSection.ref} className="py-16 bg-gradient-to-br from-red-50 to-red-100">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-fade-in">
+          <div className={`text-center mb-12 transition-all duration-1000 ${testimonialsSection.isInView ? 'animate-fade-in opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl font-bold text-gray-800 mb-4">What Parents Say</h2>
             <p className="text-xl text-gray-600">Hear from our satisfied parent community</p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className={`grid md:grid-cols-2 gap-8 transition-all duration-1000 delay-300 ${testimonialsSection.isInView ? 'animate-slide-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {[
               {
                 text: "Bright Future School has been instrumental in my child's overall development. The teachers are caring and the facilities are excellent.",
@@ -383,7 +397,7 @@ const Home = () => {
                 role: "Parent of Grade 10 student"
               }
             ].map((testimonial, index) => (
-              <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 animate-slide-up">
+              <Card key={index} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300">
                 <CardContent className="p-8">
                   <div className="flex items-center mb-4">
                     {[...Array(5)].map((_, i) => (
@@ -403,12 +417,12 @@ const Home = () => {
       </section>
 
       {/* Quick Contact */}
-      <section className="py-16 bg-white">
+      <section ref={contactSection.ref} className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <Card className="bg-gradient-to-br from-red-500 to-orange-500 border-0 shadow-xl">
+            <Card className={`bg-gradient-to-br from-red-500 to-red-600 border-0 shadow-xl transition-all duration-1000 ${contactSection.isInView ? 'animate-scale-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <CardContent className="p-8 lg:p-12 text-center text-white">
-                <div className="animate-fade-in">
+                <div>
                   <h2 className="text-3xl font-bold mb-4">Ready to Join Our School Family?</h2>
                   <p className="text-xl mb-8 opacity-90">Contact us today to schedule a visit or learn more about admissions</p>
                   
@@ -444,60 +458,60 @@ const Home = () => {
       </section>
 
       {/* Quick Links */}
-      <section className="py-16 bg-gradient-to-br from-orange-50 to-red-50">
+      <section ref={quickLinksSection.ref} className="py-16 bg-gradient-to-br from-red-50 to-red-100">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-fade-in">
+          <div className={`text-center mb-12 transition-all duration-1000 ${quickLinksSection.isInView ? 'animate-fade-in opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl font-bold text-gray-800 mb-4">Explore Our School</h2>
             <p className="text-xl text-gray-600">Discover what makes us special</p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto transition-all duration-1000 delay-300 ${quickLinksSection.isInView ? 'animate-slide-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {[
               {
                 title: 'Academic Excellence',
                 description: 'Comprehensive curriculum from Nursery to 12th grade',
                 link: '/academic',
-                color: 'from-red-500 to-orange-500',
+                color: 'from-red-500 to-red-600',
                 icon: BookOpen
               },
               {
                 title: 'World-Class Facilities',
                 description: 'Modern classrooms, labs, library, and sports facilities',
                 link: '/facilities',
-                color: 'from-orange-500 to-yellow-500',
+                color: 'from-red-400 to-red-500',
                 icon: MapPin
               },
               {
                 title: 'Extra-Curricular Activities',
                 description: 'Clubs, sports, arts, and enrichment programs',
                 link: '/activities',
-                color: 'from-red-500 to-pink-500',
+                color: 'from-red-600 to-red-700',
                 icon: Trophy
               },
               {
                 title: 'Admissions Open',
                 description: 'Join our family! Applications now being accepted',
                 link: '/admissions',
-                color: 'from-orange-500 to-red-500',
+                color: 'from-red-500 to-red-600',
                 icon: Users
               },
               {
                 title: 'School Gallery',
                 description: 'View photos from our events and daily activities',
                 link: '/gallery',
-                color: 'from-yellow-500 to-orange-500',
+                color: 'from-red-400 to-red-500',
                 icon: Star
               },
               {
                 title: 'Latest News',
                 description: 'Stay updated with school events and achievements',
                 link: '/news',
-                color: 'from-red-500 to-orange-500',
+                color: 'from-red-600 to-red-700',
                 icon: Calendar
               },
             ].map((item, index) => (
               <Link key={index} to={item.link}>
-                <Card className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group animate-slide-up">
+                <Card className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group">
                   <CardContent className="p-6">
                     <div className={`bg-gradient-to-br ${item.color} w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                       <item.icon className="h-6 w-6 text-white" />
@@ -513,14 +527,14 @@ const Home = () => {
       </section>
 
       {/* News and Updates */}
-      <section className="py-16 bg-white">
+      <section ref={newsSection.ref} className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12 animate-fade-in">
+          <div className={`text-center mb-12 transition-all duration-1000 ${newsSection.isInView ? 'animate-fade-in opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl font-bold text-gray-800 mb-4">Latest News & Updates</h2>
             <p className="text-xl text-gray-600">Stay informed about school events and announcements</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className={`grid md:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${newsSection.isInView ? 'animate-slide-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             {[
               {
                 title: 'Annual Sports Day 2024',
@@ -538,7 +552,7 @@ const Home = () => {
                 description: 'New academic session starts with enhanced curriculum and facilities.'
               }
             ].map((news, index) => (
-              <Card key={index} className="bg-gradient-to-br from-red-50 to-orange-50 border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 animate-slide-up">
+              <Card key={index} className="bg-gradient-to-br from-red-50 to-red-100 border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <CardContent className="p-6">
                   <div className="flex items-center mb-3">
                     <Clock className="h-5 w-5 text-red-500 mr-2" />
