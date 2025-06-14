@@ -11,7 +11,8 @@ import {
   Camera,
   Gamepad2,
   Heart,
-  Lightbulb
+  Lightbulb,
+  Calendar
 } from 'lucide-react';
 
 const Activities = () => {
