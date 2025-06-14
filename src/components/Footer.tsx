@@ -4,13 +4,13 @@ import { GraduationCap, Phone, Mail, MapPin, Facebook, Twitter, Instagram, Youtu
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-br from-red-900 via-orange-900 to-red-800 text-white">
+    <footer className="bg-gradient-to-br from-red-900 via-red-800 to-red-900 text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* School Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="bg-gradient-to-br from-yellow-400 to-orange-500 p-2 rounded-xl">
+              <div className="bg-gradient-to-br from-red-400 to-red-500 p-2 rounded-xl shadow-lg">
                 <GraduationCap className="h-6 w-6 text-white" />
               </div>
               <h3 className="text-xl font-bold font-nunito">Bright Future School</h3>
@@ -75,15 +75,15 @@ const Footer = () => {
             <h4 className="text-lg font-semibold font-nunito">Contact Us</h4>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <Phone className="h-4 w-4 text-yellow-400" />
+                <Phone className="h-4 w-4 text-red-400" />
                 <span className="text-red-100 text-sm">+1 (555) 123-4567</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="h-4 w-4 text-yellow-400" />
+                <Mail className="h-4 w-4 text-red-400" />
                 <span className="text-red-100 text-sm">info@brightfuture.edu</span>
               </div>
               <div className="flex items-start space-x-3">
-                <MapPin className="h-4 w-4 text-yellow-400 mt-1" />
+                <MapPin className="h-4 w-4 text-red-400 mt-1" />
                 <span className="text-red-100 text-sm">123 Education Street, Learning City, LC 12345</span>
               </div>
             </div>
