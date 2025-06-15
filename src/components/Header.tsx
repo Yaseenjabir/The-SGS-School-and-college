@@ -34,7 +34,7 @@ const Header = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-3 w-3" />
-                <span>info@brightfuture.edu</span>
+                <span>info@sgs.edu</span>
               </div>
             </div>
             <div className="hidden md:block">
@@ -59,7 +59,7 @@ const Header = () => {
             </div>
             <div className="hidden sm:block">
               <h1 className="text-3xl font-bold font-nunito bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent">
-                Bright Future School
+                SGS
               </h1>
               <p className="text-sm text-gray-600 font-medium">Nurturing Excellence Since 1985</p>
             </div>
@@ -111,7 +111,7 @@ const Header = () => {
                         </div>
                         <div>
                           <h2 className="text-lg font-bold font-nunito bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent">
-                            Bright Future School
+                            SGS
                           </h2>
                           <p className="text-xs text-gray-600 font-medium">Excellence Since 1985</p>
                         </div>
@@ -156,7 +156,7 @@ const Header = () => {
                       </div>
                       <div className="flex items-center space-x-3 text-sm text-gray-600">
                         <Mail className="h-4 w-4 text-red-500" />
-                        <span>info@brightfuture.edu</span>
+                        <span>info@sgs.edu</span>
                       </div>
                     </div>
                   </div>

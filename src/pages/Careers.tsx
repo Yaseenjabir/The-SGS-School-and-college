@@ -44,7 +44,7 @@ const Careers = () => {
     <div className="min-h-screen font-nunito py-12">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent mb-6">
             Join Our Team
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -64,7 +64,7 @@ const Careers = () => {
             ].map((benefit, index) => (
               <Card key={index} className="bg-white border-0 shadow-lg text-center animate-slide-up">
                 <CardContent className="p-8">
-                  <div className="bg-gradient-to-br from-blue-500 to-purple-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                  <div className="bg-gradient-to-br from-red-500 to-red-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4">
                     <benefit.icon className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-lg font-semibold text-gray-800 mb-2">{benefit.title}</h3>
@@ -89,7 +89,7 @@ const Careers = () => {
                     </div>
                     <div className="space-y-2">
                       <div className="flex items-center space-x-2">
-                        <GraduationCap className="h-4 w-4 text-blue-500" />
+                        <GraduationCap className="h-4 w-4 text-red-500" />
                         <span className="text-sm text-gray-600">{position.level}</span>
                       </div>
                       <div className="flex items-center space-x-2">
@@ -102,7 +102,7 @@ const Careers = () => {
                       <p className="text-sm text-gray-600">Deadline: {position.deadline}</p>
                     </div>
                     <div className="text-right">
-                      <Button className="bg-gradient-to-r from-blue-500 to-purple-600">
+                      <Button className="bg-gradient-to-r from-red-500 to-red-600">
                         Apply Now
                       </Button>
                     </div>
@@ -115,13 +115,13 @@ const Careers = () => {
 
         {/* Contact for Applications */}
         <section className="text-center">
-          <Card className="bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 border-0 shadow-xl text-white">
+          <Card className="bg-gradient-to-br from-red-600 via-red-700 to-red-800 border-0 shadow-xl text-white">
             <CardContent className="p-12">
               <h2 className="text-3xl font-bold mb-6">Ready to Apply?</h2>
-              <p className="text-xl mb-8 text-blue-100">
-                Send your resume and cover letter to hr@brightfuture.edu
+              <p className="text-xl mb-8 text-red-100">
+                Send your resume and cover letter to hr@sgs.edu
               </p>
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
+              <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100">
                 Email Application
               </Button>
             </CardContent>

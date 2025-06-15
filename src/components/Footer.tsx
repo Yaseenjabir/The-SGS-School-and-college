@@ -13,7 +13,7 @@ const Footer = () => {
               <div className="bg-gradient-to-br from-red-400 to-red-500 p-2 rounded-xl shadow-lg">
                 <GraduationCap className="h-6 w-6 text-white" />
               </div>
-              <h3 className="text-xl font-bold font-nunito">Bright Future School</h3>
+              <h3 className="text-xl font-bold font-nunito">SGS</h3>
             </div>
             <p className="text-red-100 text-sm leading-relaxed">
               Nurturing young minds and building bright futures since 1985. We provide quality education from Nursery to 12th grade.
@@ -80,7 +80,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-red-400" />
-                <span className="text-red-100 text-sm">info@brightfuture.edu</span>
+                <span className="text-red-100 text-sm">info@sgs.edu</span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="h-4 w-4 text-red-400 mt-1" />
@@ -92,7 +92,7 @@ const Footer = () => {
 
         <div className="border-t border-red-800 mt-8 pt-8 text-center">
           <p className="text-red-100 text-sm">
-            © 2024 Bright Future School. All rights reserved. | 
+            © 2024 SGS. All rights reserved. | 
             <Link to="/careers" className="hover:text-white ml-1">Careers</Link> | 
             <Link to="/alumni" className="hover:text-white ml-1">Alumni</Link>
           </p>

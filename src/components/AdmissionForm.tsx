@@ -71,7 +71,7 @@ const AdmissionForm: React.FC<AdmissionFormProps> = ({ open, onOpenChange }) => 
 ${data.additionalInfo ? sanitizeInput(data.additionalInfo) : 'None provided'}
 
 ---
-Thank you for your interest in Bright Future School! We look forward to welcoming your child to our school family. 🌟`;
+Thank you for your interest in SGS! We look forward to welcoming your child to our school family. 🌟`;
 
     return encodeURIComponent(message);
   };
