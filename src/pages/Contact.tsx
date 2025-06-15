@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -119,8 +118,8 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-800 mb-1">Phone</h3>
-                        <p className="text-gray-600">Main Office: +1 (555) 123-4567</p>
-                        <p className="text-gray-600">Admissions: +1 (555) 123-4568</p>
+                        <p className="text-gray-600">Main Office: +92 307 930 2311</p>
+                        <p className="text-gray-600">Admissions: +92 307 930 2311</p>
                       </div>
                     </div>
                   </CardContent>
@@ -134,8 +133,8 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-800 mb-1">Email</h3>
-                        <p className="text-gray-600">info@brightfuture.edu</p>
-                        <p className="text-gray-600">admissions@brightfuture.edu</p>
+                        <p className="text-gray-600">info@sgs.edu.pk</p>
+                        <p className="text-gray-600">admissions@sgs.edu.pk</p>
                       </div>
                     </div>
                   </CardContent>
@@ -150,9 +149,8 @@ const Contact = () => {
                       <div>
                         <h3 className="font-semibold text-gray-800 mb-1">Address</h3>
                         <p className="text-gray-600">
-                          123 Education Street<br />
-                          Learning City, LC 12345<br />
-                          United States
+                          WCRJ+WW7, Sambat Cham<br />
+                          Pakistan
                         </p>
                       </div>
                     </div>
@@ -312,9 +310,9 @@ const Contact = () => {
               <div className="h-96 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
                 <div className="text-center">
                   <MapPin className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600 text-lg">Interactive Campus Map</p>
+                  <p className="text-gray-600 text-lg">School Campus Location</p>
                   <p className="text-gray-500">
-                    123 Education Street, Learning City, LC 12345
+                    WCRJ+WW7, Sambat Cham, Pakistan
                   </p>
                 </div>
               </div>
