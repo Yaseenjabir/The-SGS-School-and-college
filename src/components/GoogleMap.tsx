@@ -1,119 +1,144 @@
 
 import { useEffect, useRef } from 'react';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
 
 interface GoogleMapProps {
   address: string;
   className?: string;
 }
 
-declare global {
-  interface Window {
-    google: any;
-    initMap: () => void;
-  }
-}
+// Fix for default markers in Leaflet
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
 
 const GoogleMap = ({ address, className = '' }: GoogleMapProps) => {
   const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<any>(null);
+  const mapInstanceRef = useRef<L.Map | null>(null);
 
   useEffect(() => {
-    const loadGoogleMaps = () => {
-      if (window.google && window.google.maps) {
-        initializeMap();
-        return;
-      }
+    if (!mapRef.current) return;
 
-      // Load Google Maps API
-      const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places`;
-      script.async = true;
-      script.defer = true;
-      script.onload = initializeMap;
-      document.head.appendChild(script);
-    };
+    // Initialize map with default coordinates for Sambat Cham, Pakistan
+    const defaultLat = 32.0;
+    const defaultLng = 72.0;
 
-    const initializeMap = () => {
-      if (!mapRef.current || !window.google) return;
+    const map = L.map(mapRef.current).setView([defaultLat, defaultLng], 15);
 
-      // Initialize map
-      const map = new window.google.maps.Map(mapRef.current, {
-        zoom: 15,
-        center: { lat: 32.0, lng: 72.0 }, // Default center, will be updated
-        mapTypeId: window.google.maps.MapTypeId.ROADMAP,
-        styles: [
-          {
-            featureType: "all",
-            elementType: "geometry.fill",
-            stylers: [{ color: "#f5f5f5" }]
-          },
-          {
-            featureType: "road",
-            elementType: "geometry",
-            stylers: [{ color: "#ffffff" }]
-          },
-          {
-            featureType: "water",
-            elementType: "geometry",
-            stylers: [{ color: "#c9c9c9" }]
-          }
-        ]
-      });
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 19,
+    }).addTo(map);
 
-      mapInstanceRef.current = map;
+    mapInstanceRef.current = map;
 
-      // Geocode the address
-      const geocoder = new window.google.maps.Geocoder();
-      geocoder.geocode({ address: address }, (results: any, status: any) => {
-        if (status === 'OK' && results[0]) {
-          const location = results[0].geometry.location;
-          map.setCenter(location);
+    // Create custom marker icon
+    const customIcon = L.divIcon({
+      html: `
+        <div style="
+          background-color: #dc2626;
+          width: 40px;
+          height: 40px;
+          border-radius: 50% 50% 50% 0;
+          transform: rotate(-45deg);
+          border: 3px solid #ffffff;
+          box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        ">
+          <div style="
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            color: white;
+            font-size: 16px;
+          ">📍</div>
+        </div>
+      `,
+      className: 'custom-marker',
+      iconSize: [40, 40],
+      iconAnchor: [20, 40],
+      popupAnchor: [0, -40]
+    });
+
+    // Add marker
+    const marker = L.marker([defaultLat, defaultLng], { icon: customIcon }).addTo(map);
+
+    // Add popup
+    marker.bindPopup(`
+      <div style="font-family: 'Nunito', sans-serif; padding: 10px;">
+        <h3 style="margin: 0 0 8px 0; color: #dc2626; font-weight: bold; font-size: 16px;">
+          School Location
+        </h3>
+        <p style="margin: 0; color: #666; font-size: 14px;">
+          ${address}
+        </p>
+        <div style="margin-top: 8px;">
+          <a 
+            href="https://www.openstreetmap.org/directions?from=&to=${defaultLat},${defaultLng}" 
+            target="_blank" 
+            style="color: #dc2626; text-decoration: none; font-size: 12px;"
+          >
+            Get Directions →
+          </a>
+        </div>
+      </div>
+    `);
+
+    // Try to geocode the address using Nominatim (OpenStreetMap's geocoding service)
+    const geocodeAddress = async () => {
+      try {
+        const response = await fetch(
+          `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&limit=1`
+        );
+        const data = await response.json();
+        
+        if (data && data.length > 0) {
+          const lat = parseFloat(data[0].lat);
+          const lng = parseFloat(data[0].lon);
           
-          // Add marker
-          new window.google.maps.Marker({
-            position: location,
-            map: map,
-            title: 'School Location',
-            icon: {
-              url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 0C12.268 0 6 6.268 6 14C6 24.5 20 40 20 40S34 24.5 34 14C34 6.268 27.732 0 20 0ZM20 19C17.239 19 15 16.761 15 14C15 11.239 17.239 9 20 9C22.761 9 25 11.239 25 14C25 16.761 22.761 19 20 19Z" fill="#dc2626"/>
-                </svg>
-              `),
-              scaledSize: new window.google.maps.Size(40, 40),
-              anchor: new window.google.maps.Point(20, 40)
-            }
-          });
-
-          // Add info window
-          const infoWindow = new window.google.maps.InfoWindow({
-            content: `
-              <div style="padding: 10px; font-family: 'Nunito', sans-serif;">
-                <h3 style="margin: 0 0 5px 0; color: #dc2626; font-weight: bold;">School Location</h3>
-                <p style="margin: 0; color: #666;">${address}</p>
+          // Update map center and marker position
+          map.setView([lat, lng], 15);
+          marker.setLatLng([lat, lng]);
+          
+          // Update popup with directions link
+          marker.bindPopup(`
+            <div style="font-family: 'Nunito', sans-serif; padding: 10px;">
+              <h3 style="margin: 0 0 8px 0; color: #dc2626; font-weight: bold; font-size: 16px;">
+                School Location
+              </h3>
+              <p style="margin: 0; color: #666; font-size: 14px;">
+                ${address}
+              </p>
+              <div style="margin-top: 8px;">
+                <a 
+                  href="https://www.openstreetmap.org/directions?from=&to=${lat},${lng}" 
+                  target="_blank" 
+                  style="color: #dc2626; text-decoration: none; font-size: 12px;"
+                >
+                  Get Directions →
+                </a>
               </div>
-            `
-          });
-
-          const marker = new window.google.maps.Marker({
-            position: location,
-            map: map,
-            title: 'School Location'
-          });
-
-          marker.addListener('click', () => {
-            infoWindow.open(map, marker);
-          });
-        } else {
-          console.error('Geocoding failed: ' + status);
+            </div>
+          `);
         }
-      });
+      } catch (error) {
+        console.log('Geocoding failed, using default coordinates');
+      }
     };
 
-    loadGoogleMaps();
+    geocodeAddress();
 
+    // Cleanup function
     return () => {
-      // Cleanup if needed
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
     };
   }, [address]);
 
@@ -122,6 +147,9 @@ const GoogleMap = ({ address, className = '' }: GoogleMapProps) => {
       <div ref={mapRef} className="w-full h-full rounded-lg" />
       <div className="absolute top-4 left-4 bg-white px-3 py-2 rounded-lg shadow-lg">
         <p className="text-sm text-gray-600 font-medium">📍 {address}</p>
+      </div>
+      <div className="absolute bottom-4 right-4 bg-white px-3 py-1 rounded-lg shadow-lg">
+        <p className="text-xs text-gray-500">Powered by OpenStreetMap</p>
       </div>
     </div>
   );
