@@ -41,11 +41,37 @@ const Contact = () => {
       return;
     }
 
-    // Simulate form submission
+    // Sanitize input data
+    const sanitizedData = {
+      name: formData.name.trim().replace(/[<>]/g, ''),
+      email: formData.email.trim().replace(/[<>]/g, ''),
+      phone: formData.phone.trim().replace(/[<>]/g, ''),
+      subject: formData.subject.trim().replace(/[<>]/g, ''),
+      message: formData.message.trim().replace(/[<>]/g, '')
+    };
+
+    // Format WhatsApp message
+    const whatsappMessage = `*Contact Form Inquiry*%0A%0A` +
+      `*Name:* ${encodeURIComponent(sanitizedData.name)}%0A` +
+      `*Email:* ${encodeURIComponent(sanitizedData.email)}%0A` +
+      `*Phone:* ${encodeURIComponent(sanitizedData.phone || 'Not provided')}%0A` +
+      `*Subject:* ${encodeURIComponent(sanitizedData.subject || 'General Inquiry')}%0A` +
+      `*Message:* ${encodeURIComponent(sanitizedData.message)}`;
+
+    // WhatsApp number
+    const whatsappNumber = '923079302311';
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+
+    // Show success toast
     toast({
-      title: "Message sent successfully!",
-      description: "We'll get back to you within 24 hours.",
+      title: "Redirecting to WhatsApp",
+      description: "You'll be redirected to WhatsApp to send your inquiry.",
     });
+
+    // Redirect to WhatsApp after a short delay
+    setTimeout(() => {
+      window.open(whatsappUrl, '_blank');
+    }, 1000);
 
     // Reset form
     setFormData({
