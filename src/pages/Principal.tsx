@@ -9,6 +9,7 @@ import {
   Calendar,
   Quote
 } from 'lucide-react';
+import AnimatedSection from '@/components/AnimatedSection';
 
 const Principal = () => {
   const achievements = [
@@ -49,30 +50,30 @@ const Principal = () => {
     <div className="min-h-screen font-nunito py-12">
       <div className="container mx-auto px-4">
         {/* Header Section */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
+        <AnimatedSection animation="fade-in" className="text-center mb-16">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-red-600 to-red-700 bg-clip-text text-transparent mb-6">
             Meet Our Principal
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Dedicated to educational excellence and student success
           </p>
-        </div>
+        </AnimatedSection>
 
         {/* Principal Introduction */}
-        <section className="mb-16">
-          <Card className="bg-white border-0 shadow-xl overflow-hidden animate-slide-up">
+        <AnimatedSection animation="slide-up" className="mb-16">
+          <Card className="bg-white border-0 shadow-xl overflow-hidden">
             <CardContent className="p-0">
               <div className="grid lg:grid-cols-2 gap-0">
                 {/* Photo Section */}
-                <div className="bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 p-12 flex items-center justify-center">
+                <div className="bg-gradient-to-br from-red-100 via-red-50 to-red-100 p-12 flex items-center justify-center">
                   <div className="text-center">
-                    <div className="bg-gradient-to-br from-blue-500 to-purple-600 w-48 h-48 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
+                    <div className="bg-gradient-to-br from-red-500 to-red-600 w-48 h-48 rounded-full flex items-center justify-center mx-auto mb-6 shadow-2xl">
                       <GraduationCap className="h-24 w-24 text-white" />
                     </div>
                     <h2 className="text-3xl font-bold text-gray-800 mb-2">Dr. Sarah Johnson</h2>
-                    <p className="text-xl text-blue-600 font-medium mb-4">Principal</p>
+                    <p className="text-xl text-red-600 font-medium mb-4">Principal</p>
                     <div className="flex justify-center space-x-2">
-                      <Badge className="bg-gradient-to-r from-blue-500 to-purple-500">Ph.D. Educational Leadership</Badge>
+                      <Badge className="bg-gradient-to-r from-red-500 to-red-600">Ph.D. Educational Leadership</Badge>
                     </div>
                   </div>
                 </div>
@@ -80,7 +81,7 @@ const Principal = () => {
                 {/* Content Section */}
                 <div className="p-12">
                   <div className="mb-8">
-                    <Quote className="h-8 w-8 text-blue-500 mb-4" />
+                    <Quote className="h-8 w-8 text-red-500 mb-4" />
                     <blockquote className="text-lg text-gray-700 italic leading-relaxed mb-6">
                       "Education is not just about imparting knowledge; it's about igniting curiosity, 
                       fostering creativity, and nurturing the whole child. Every student who walks through 
@@ -109,11 +110,11 @@ const Principal = () => {
               </div>
             </CardContent>
           </Card>
-        </section>
+        </AnimatedSection>
 
         {/* Full Message */}
-        <section className="mb-16">
-          <Card className="bg-gradient-to-br from-blue-50 to-purple-50 border-0 shadow-lg animate-fade-in">
+        <AnimatedSection animation="fade-in" className="mb-16">
+          <Card className="bg-gradient-to-br from-red-50 to-red-100 border-0 shadow-lg">
             <CardContent className="p-12">
               <h2 className="text-3xl font-bold text-gray-800 mb-8 text-center">Principal's Message</h2>
               <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6">
@@ -121,13 +122,13 @@ const Principal = () => {
                   Dear Parents, Students, and Community Members,
                 </p>
                 <p>
-                  It is with great pleasure and excitement that I welcome you to Bright Future School, 
+                  It is with great pleasure and excitement that I welcome you to SGS, 
                   where we have been nurturing young minds and building bright futures for over three decades. 
                   As the Principal of this remarkable institution, I am honored to lead a community dedicated 
                   to educational excellence, character development, and the holistic growth of every child.
                 </p>
                 <p>
-                  At Bright Future School, we believe that education extends far beyond textbooks and 
+                  At SGS, we believe that education extends far beyond textbooks and 
                   examinations. Our philosophy centers on creating an environment where students feel safe 
                   to explore, question, and discover their passions. We recognize that each child is unique, 
                   with their own learning style, interests, and potential. Our dedicated team of educators 
@@ -161,20 +162,20 @@ const Principal = () => {
                 <p className="text-right font-medium">
                   Warm regards,<br />
                   Dr. Sarah Johnson<br />
-                  Principal, Bright Future School
+                  Principal, SGS
                 </p>
               </div>
             </CardContent>
           </Card>
-        </section>
+        </AnimatedSection>
 
         {/* Achievements & Qualifications */}
-        <section className="mb-16">
+        <AnimatedSection animation="slide-up" className="mb-16">
           <div className="grid lg:grid-cols-2 gap-8">
-            <Card className="bg-white border-0 shadow-lg animate-slide-up">
+            <Card className="bg-white border-0 shadow-lg">
               <CardContent className="p-8">
                 <div className="flex items-center mb-6">
-                  <BookOpen className="h-8 w-8 text-blue-500 mr-3" />
+                  <BookOpen className="h-8 w-8 text-red-500 mr-3" />
                   <h3 className="text-2xl font-bold text-gray-800">Qualifications & Achievements</h3>
                 </div>
                 <div className="space-y-4">
@@ -188,15 +189,15 @@ const Principal = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-white border-0 shadow-lg animate-slide-up">
+            <Card className="bg-white border-0 shadow-lg">
               <CardContent className="p-8">
                 <div className="flex items-center mb-6">
-                  <Users className="h-8 w-8 text-purple-500 mr-3" />
+                  <Users className="h-8 w-8 text-red-500 mr-3" />
                   <h3 className="text-2xl font-bold text-gray-800">Key Initiatives</h3>
                 </div>
                 <div className="space-y-6">
                   {initiatives.map((initiative, index) => (
-                    <div key={index} className="border-l-4 border-blue-500 pl-4">
+                    <div key={index} className="border-l-4 border-red-500 pl-4">
                       <div className="flex items-center justify-between mb-2">
                         <h4 className="font-semibold text-gray-800">{initiative.title}</h4>
                         <Badge variant="outline">{initiative.year}</Badge>
@@ -208,14 +209,14 @@ const Principal = () => {
               </CardContent>
             </Card>
           </div>
-        </section>
+        </AnimatedSection>
 
         {/* Vision for the Future */}
-        <section>
-          <Card className="bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 border-0 shadow-xl text-white animate-scale-up">
+        <AnimatedSection animation="scale-up">
+          <Card className="bg-gradient-to-br from-red-600 via-red-700 to-red-800 border-0 shadow-xl text-white">
             <CardContent className="p-12 text-center">
               <h2 className="text-4xl font-bold mb-6">Vision for the Future</h2>
-              <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl mb-8 text-red-100 max-w-3xl mx-auto leading-relaxed">
                 "As we move forward, our commitment remains unchanged: to provide an education that not only 
                 prepares our students for academic success but also empowers them to become compassionate 
                 leaders who will make a positive difference in the world."
@@ -226,26 +227,26 @@ const Principal = () => {
                     <GraduationCap className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">Innovation</h3>
-                  <p className="text-blue-100">Embracing new technologies and teaching methods</p>
+                  <p className="text-red-100">Embracing new technologies and teaching methods</p>
                 </div>
                 <div>
                   <div className="bg-white/20 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4">
                     <Users className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">Community</h3>
-                  <p className="text-blue-100">Building stronger connections with families and society</p>
+                  <p className="text-red-100">Building stronger connections with families and society</p>
                 </div>
                 <div>
                   <div className="bg-white/20 w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4">
                     <Award className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">Excellence</h3>
-                  <p className="text-blue-100">Maintaining highest standards in all we do</p>
+                  <p className="text-red-100">Maintaining highest standards in all we do</p>
                 </div>
               </div>
             </CardContent>
           </Card>
-        </section>
+        </AnimatedSection>
       </div>
     </div>
   );
