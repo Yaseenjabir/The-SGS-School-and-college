@@ -13,10 +13,7 @@ import {
   Mail, 
   MapPin, 
   Clock, 
-  Send,
-  MessageCircle,
-  Calendar,
-  Users
+  Send
 } from 'lucide-react';
 
 const Contact = () => {
@@ -175,25 +172,6 @@ const Contact = () => {
                     </div>
                   </CardContent>
                 </Card>
-              </div>
-            </AnimatedSection>
-
-            {/* Quick Contact Options */}
-            <AnimatedSection className="space-y-4">
-              <h3 className="text-xl font-semibold text-gray-800">Quick Actions</h3>
-              <div className="space-y-3">
-                <Button className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700">
-                  <Calendar className="mr-2 h-4 w-4" />
-                  Schedule a Visit
-                </Button>
-                <Button variant="outline" className="w-full border-red-500 text-red-600 hover:bg-red-50">
-                  <MessageCircle className="mr-2 h-4 w-4" />
-                  Live Chat Support
-                </Button>
-                <Button variant="outline" className="w-full border-red-500 text-red-600 hover:bg-red-50">
-                  <Users className="mr-2 h-4 w-4" />
-                  Admission Consultation
-                </Button>
               </div>
             </AnimatedSection>
           </div>
