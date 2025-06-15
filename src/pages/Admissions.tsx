@@ -1,8 +1,9 @@
-
+import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import AnimatedSection from '@/components/AnimatedSection';
+import AdmissionForm from '@/components/AdmissionForm';
 import { 
   FileText, 
   Calendar, 
@@ -16,6 +17,8 @@ import {
 } from 'lucide-react';
 
 const Admissions = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
+
   const admissionSteps = [
     {
       step: 1,
@@ -278,7 +281,11 @@ const Admissions = () => {
                   Start your child's journey towards a bright future today!
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-white text-red-600 hover:bg-gray-100 px-8 py-4 text-lg">
+                  <Button 
+                    size="lg" 
+                    className="bg-white text-red-600 hover:bg-gray-100 px-8 py-4 text-lg"
+                    onClick={() => setIsFormOpen(true)}
+                  >
                     Apply Online Now
                   </Button>
                   <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 text-lg">
@@ -290,6 +297,9 @@ const Admissions = () => {
           </section>
         </AnimatedSection>
       </div>
+
+      {/* Admission Form Modal */}
+      <AdmissionForm open={isFormOpen} onOpenChange={setIsFormOpen} />
     </div>
   );
 };
