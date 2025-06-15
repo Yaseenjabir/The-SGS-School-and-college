@@ -17,7 +17,6 @@ import {
   Calendar,
   Users
 } from 'lucide-react';
-import MapSection from '@/components/MapSection';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -128,7 +127,7 @@ const Contact = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-red-50 to-red-100 border-0 shadow-lg">
+                <Card className="bg-gradient-to-br from-red-600 to-red-700 w-12 h-12 rounded-xl flex items-center justify-center">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className="bg-gradient-to-br from-red-600 to-red-700 w-12 h-12 rounded-xl flex items-center justify-center">
@@ -143,7 +142,7 @@ const Contact = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-red-50 to-red-100 border-0 shadow-lg">
+                <Card className="bg-gradient-to-br from-red-700 to-red-800 w-12 h-12 rounded-xl flex items-center justify-center">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className="bg-gradient-to-br from-red-700 to-red-800 w-12 h-12 rounded-xl flex items-center justify-center">
@@ -160,7 +159,7 @@ const Contact = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="bg-gradient-to-br from-red-50 to-red-100 border-0 shadow-lg">
+                <Card className="bg-gradient-to-br from-red-800 to-red-900 w-12 h-12 rounded-xl flex items-center justify-center">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className="bg-gradient-to-br from-red-800 to-red-900 w-12 h-12 rounded-xl flex items-center justify-center">
@@ -299,9 +298,6 @@ const Contact = () => {
             </AnimatedSection>
           </div>
         </div>
-
-        {/* Map Section */}
-        <MapSection address={schoolAddress} />
       </div>
     </AnimatedPage>
   );
