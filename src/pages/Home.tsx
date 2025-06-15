@@ -17,12 +17,10 @@ import {
   Globe,
   Heart,
   Award,
-  Clock,
   Phone,
   Mail,
   Lightbulb,
   Target,
-  ChevronRight,
   Play,
   CheckCircle
 } from 'lucide-react';
@@ -41,7 +39,6 @@ const Home = () => {
   const testimonialsSection = useInViewAnimation(0.2);
   const contactSection = useInViewAnimation(0.2);
   const quickLinksSection = useInViewAnimation(0.2);
-  const newsSection = useInViewAnimation(0.2);
 
   return (
     <>
@@ -527,51 +524,6 @@ const Home = () => {
                     </CardContent>
                   </Card>
                 </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* News and Updates */}
-        <section ref={newsSection.ref} className="py-16 bg-white">
-          <div className="container mx-auto px-4">
-            <div className={`text-center mb-12 transition-all duration-1000 ${newsSection.isInView ? 'animate-fade-in opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">Latest News & Updates</h2>
-              <p className="text-xl text-gray-600">Stay informed about school events and announcements</p>
-            </div>
-            
-            <div className={`grid md:grid-cols-3 gap-8 transition-all duration-1000 delay-300 ${newsSection.isInView ? 'animate-slide-up opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              {[
-                {
-                  title: 'Annual Sports Day 2024',
-                  date: 'March 15, 2024',
-                  description: 'Join us for our annual sports day celebration with exciting competitions.'
-                },
-                {
-                  title: 'Science Exhibition',
-                  date: 'March 20, 2024',
-                  description: 'Students showcase their innovative science projects and experiments.'
-                },
-                {
-                  title: 'New Semester Begins',
-                  date: 'April 1, 2024',
-                  description: 'New academic session starts with enhanced curriculum and facilities.'
-                }
-              ].map((news, index) => (
-                <Card key={index} className="bg-gradient-to-br from-red-50 to-red-100 border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                  <CardContent className="p-6">
-                    <div className="flex items-center mb-3">
-                      <Clock className="h-5 w-5 text-red-500 mr-2" />
-                      <span className="text-sm text-gray-600">{news.date}</span>
-                    </div>
-                    <h3 className="text-xl font-semibold text-gray-800 mb-3">{news.title}</h3>
-                    <p className="text-gray-600 mb-4">{news.description}</p>
-                    <Link to="/news" className="text-red-600 hover:text-red-700 font-medium flex items-center">
-                      Read More
-                      <ChevronRight className="h-4 w-4 ml-1" />
-                    </Link>
-                  </CardContent>
-                </Card>
               ))}
             </div>
           </div>
