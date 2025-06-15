@@ -17,6 +17,7 @@ import {
   Calendar,
   Users
 } from 'lucide-react';
+import MapSection from '@/components/MapSection';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -88,6 +89,8 @@ const Contact = () => {
       [e.target.name]: e.target.value
     });
   };
+
+  const schoolAddress = "WCRJ+WW7, Sambat Cham, Pakistan";
 
   return (
     <AnimatedPage className="min-h-screen font-nunito py-12">
@@ -298,27 +301,7 @@ const Contact = () => {
         </div>
 
         {/* Map Section */}
-        <AnimatedSection className="mt-16">
-          <Card className="bg-white border-0 shadow-xl overflow-hidden">
-            <CardContent className="p-0">
-              <div className="bg-gradient-to-r from-red-500 to-red-600 p-8 text-white text-center">
-                <h2 className="text-3xl font-bold mb-2">Visit Our Campus</h2>
-                <p className="text-red-100">
-                  Come see our beautiful facilities and meet our amazing team!
-                </p>
-              </div>
-              <div className="h-96 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                  <p className="text-gray-600 text-lg">School Campus Location</p>
-                  <p className="text-gray-500">
-                    WCRJ+WW7, Sambat Cham, Pakistan
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </AnimatedSection>
+        <MapSection address={schoolAddress} />
       </div>
     </AnimatedPage>
   );
