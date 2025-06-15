@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ChevronDown, ChevronRight, HelpCircle, Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import AnimatedSection from '@/components/AnimatedSection';
 
 const FAQ = () => {
   const [openItems, setOpenItems] = useState<number[]>([]);
@@ -64,7 +65,7 @@ const FAQ = () => {
     },
     {
       category: "Fees & Financial Aid",
-      color: "bg-purple-500",
+      color: "bg-red-500",
       questions: [
         {
           question: "What is the fee structure?",
@@ -108,7 +109,7 @@ const FAQ = () => {
     },
     {
       category: "Health & Safety",
-      color: "bg-red-500",
+      color: "bg-red-600",
       questions: [
         {
           question: "What safety measures do you have in place?",
@@ -142,18 +143,18 @@ const FAQ = () => {
     <div className="min-h-screen font-nunito py-12">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-6">
+        <AnimatedSection animation="fade-in" className="text-center mb-16">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent mb-6">
             Frequently Asked Questions
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Find answers to common questions about our school, admissions process, 
             academic programs, and policies. Can't find what you're looking for? Contact us!
           </p>
-        </div>
+        </AnimatedSection>
 
         {/* Search Bar */}
-        <div className="max-w-2xl mx-auto mb-12 animate-slide-up">
+        <AnimatedSection animation="slide-up" delay={200} className="max-w-2xl mx-auto mb-12">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
             <Input
@@ -161,15 +162,19 @@ const FAQ = () => {
               placeholder="Search frequently asked questions..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 pr-4 py-3 text-lg border-2 border-gray-200 focus:border-blue-500"
+              className="pl-10 pr-4 py-3 text-lg border-2 border-gray-200 focus:border-red-500"
             />
           </div>
-        </div>
+        </AnimatedSection>
 
         {/* FAQ Categories */}
         <div className="space-y-8">
           {filteredFAQs.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="animate-fade-in">
+            <AnimatedSection 
+              key={categoryIndex} 
+              animation="fade-in"
+              delay={categoryIndex * 100}
+            >
               <div className="flex items-center mb-6">
                 <div className={`${category.color} w-4 h-4 rounded-full mr-3`}></div>
                 <h2 className="text-2xl font-bold text-gray-800">{category.category}</h2>
@@ -184,59 +189,65 @@ const FAQ = () => {
                   const isOpen = openItems.includes(globalIndex);
 
                   return (
-                    <Card key={faqIndex} className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300">
-                      <CardContent className="p-0">
-                        <button
-                          onClick={() => toggleItem(globalIndex)}
-                          className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
-                        >
-                          <div className="flex items-center space-x-3">
-                            <HelpCircle className="h-5 w-5 text-blue-500 flex-shrink-0" />
-                            <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
-                          </div>
-                          {isOpen ? (
-                            <ChevronDown className="h-5 w-5 text-gray-500" />
-                          ) : (
-                            <ChevronRight className="h-5 w-5 text-gray-500" />
-                          )}
-                        </button>
-                        
-                        {isOpen && (
-                          <div className="px-6 pb-6 pt-0">
-                            <div className="bg-gray-50 rounded-lg p-4 ml-8">
-                              <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                    <AnimatedSection 
+                      key={faqIndex}
+                      animation="slide-up"
+                      delay={faqIndex * 50}
+                    >
+                      <Card className="bg-white border-0 shadow-lg hover:shadow-xl transition-all duration-300">
+                        <CardContent className="p-0">
+                          <button
+                            onClick={() => toggleItem(globalIndex)}
+                            className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                          >
+                            <div className="flex items-center space-x-3">
+                              <HelpCircle className="h-5 w-5 text-red-500 flex-shrink-0" />
+                              <h3 className="text-lg font-semibold text-gray-800">{faq.question}</h3>
                             </div>
-                          </div>
-                        )}
-                      </CardContent>
-                    </Card>
+                            {isOpen ? (
+                              <ChevronDown className="h-5 w-5 text-gray-500" />
+                            ) : (
+                              <ChevronRight className="h-5 w-5 text-gray-500" />
+                            )}
+                          </button>
+                          
+                          {isOpen && (
+                            <div className="px-6 pb-6 pt-0">
+                              <div className="bg-gray-50 rounded-lg p-4 ml-8">
+                                <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                              </div>
+                            </div>
+                          )}
+                        </CardContent>
+                      </Card>
+                    </AnimatedSection>
                   );
                 })}
               </div>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
 
         {/* Contact Section */}
-        <section className="mt-16 text-center">
-          <Card className="bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 border-0 shadow-xl text-white animate-scale-up">
+        <AnimatedSection animation="scale-up" delay={400} className="mt-16 text-center">
+          <Card className="bg-gradient-to-br from-red-600 via-red-700 to-red-800 border-0 shadow-xl text-white">
             <CardContent className="p-12">
               <h2 className="text-3xl font-bold mb-6">Still Have Questions?</h2>
-              <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-xl mb-8 text-red-100 max-w-2xl mx-auto leading-relaxed">
                 Our admissions team is here to help! Contact us for personalized assistance 
                 with any questions about our school and programs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
+                <button className="bg-white text-red-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
                   Contact Admissions
                 </button>
-                <button className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
+                <button className="border-2 border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 text-lg font-semibold rounded-lg transition-colors">
                   Schedule Visit
                 </button>
               </div>
             </CardContent>
           </Card>
-        </section>
+        </AnimatedSection>
       </div>
     </div>
   );
