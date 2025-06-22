@@ -47,7 +47,7 @@ const Header = () => {
                 </div>
               </div>
               <div className="hidden md:block">
-                <span>📚 Excellence in Education Since 1985</span>
+                <span>📚 Excellence in Education Since {since}</span>
               </div>
             </div>
           </div>
