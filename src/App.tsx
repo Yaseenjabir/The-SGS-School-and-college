@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -30,9 +29,10 @@ const queryClient = new QueryClient();
 const App = () => {
   useEffect(() => {
     // Add Google Fonts
-    const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap';
-    link.rel = 'stylesheet';
+    const link = document.createElement("link");
+    link.href =
+      "https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap";
+    link.rel = "stylesheet";
     document.head.appendChild(link);
   }, []);
 
@@ -60,7 +60,7 @@ const App = () => {
                 <Route path="/gallery" element={<Gallery />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/principal" element={<Principal />} />
-                <Route path="/alumni" element={<Alumni />} />
+                {/* <Route path="/alumni" element={<Alumni />} /> */}
                 <Route path="/awards" element={<Awards />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>

@@ -18,9 +18,7 @@ const Footer = () => {
           {/* School Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <div className="border border-white p-2 rounded-xl shadow-lg">
-                <GraduationCap className="h-6 w-6 text-white" />
-              </div>
+              <img className="w-6 h-6" src="/sgs-logo.png" alt="" />
               <h3 className="text-xl font-bold font-nunito">{schoolName}</h3>
             </div>
             <p className="text-red-100 text-sm leading-relaxed">
@@ -106,10 +104,6 @@ const Footer = () => {
             <Link to="/careers" className="hover:text-white ml-1">
               Careers
             </Link>{" "}
-            |
-            <Link to="/alumni" className="hover:text-white ml-1">
-              Alumni
-            </Link>
           </p>
         </div>
       </div>
