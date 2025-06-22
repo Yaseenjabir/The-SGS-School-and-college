@@ -1,34 +1,28 @@
-
-import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { useToast } from '@/components/ui/use-toast';
-import AnimatedPage from '@/components/AnimatedPage';
-import AnimatedSection from '@/components/AnimatedSection';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  Send
-} from 'lucide-react';
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/components/ui/use-toast";
+import AnimatedPage from "@/components/AnimatedPage";
+import AnimatedSection from "@/components/AnimatedSection";
+import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
+import { emailAddress, location, phoneNumber } from "@/lib/utils";
 
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Simple form validation
     if (!formData.name || !formData.email || !formData.message) {
       toast({
@@ -40,23 +34,28 @@ const Contact = () => {
 
     // Sanitize input data
     const sanitizedData = {
-      name: formData.name.trim().replace(/[<>]/g, ''),
-      email: formData.email.trim().replace(/[<>]/g, ''),
-      phone: formData.phone.trim().replace(/[<>]/g, ''),
-      subject: formData.subject.trim().replace(/[<>]/g, ''),
-      message: formData.message.trim().replace(/[<>]/g, '')
+      name: formData.name.trim().replace(/[<>]/g, ""),
+      email: formData.email.trim().replace(/[<>]/g, ""),
+      phone: formData.phone.trim().replace(/[<>]/g, ""),
+      subject: formData.subject.trim().replace(/[<>]/g, ""),
+      message: formData.message.trim().replace(/[<>]/g, ""),
     };
 
     // Format WhatsApp message
-    const whatsappMessage = `*Contact Form Inquiry*%0A%0A` +
+    const whatsappMessage =
+      `*Contact Form Inquiry*%0A%0A` +
       `*Name:* ${encodeURIComponent(sanitizedData.name)}%0A` +
       `*Email:* ${encodeURIComponent(sanitizedData.email)}%0A` +
-      `*Phone:* ${encodeURIComponent(sanitizedData.phone || 'Not provided')}%0A` +
-      `*Subject:* ${encodeURIComponent(sanitizedData.subject || 'General Inquiry')}%0A` +
+      `*Phone:* ${encodeURIComponent(
+        sanitizedData.phone || "Not provided"
+      )}%0A` +
+      `*Subject:* ${encodeURIComponent(
+        sanitizedData.subject || "General Inquiry"
+      )}%0A` +
       `*Message:* ${encodeURIComponent(sanitizedData.message)}`;
 
     // WhatsApp number
-    const whatsappNumber = '923079302311';
+    const whatsappNumber = "+923331677444";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
     // Show success toast
@@ -67,39 +66,42 @@ const Contact = () => {
 
     // Redirect to WhatsApp after a short delay
     setTimeout(() => {
-      window.open(whatsappUrl, '_blank');
+      window.open(whatsappUrl, "_blank");
     }, 1000);
 
     // Reset form
     setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
     });
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const schoolAddress = "WCRJ+WW7, Sambat Cham, Pakistan";
 
   return (
-    <AnimatedPage className="min-h-screen font-nunito py-12">
+    <AnimatedPage className="min-h-screen font-nunito py-12 bg-white">
       <div className="container mx-auto px-4">
         {/* Header */}
         <AnimatedSection className="text-center mb-16">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-red-600 to-red-800 bg-clip-text text-transparent mb-6">
+          <h1 className="text-5xl font-bold text-[#800000] bg-clip-text mb-6">
             Contact Us
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We'd love to hear from you! Get in touch with any questions about admissions, 
-            academics, or general inquiries. Our team is here to help.
+            We'd love to hear from you! Get in touch with any questions about
+            admissions, academics, or general inquiries. Our team is here to
+            help.
           </p>
         </AnimatedSection>
 
@@ -107,8 +109,10 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="lg:col-span-1 space-y-6">
             <AnimatedSection>
-              <h2 className="text-3xl font-bold text-gray-800 mb-8">Get in Touch</h2>
-              
+              <h2 className="text-3xl font-bold text-gray-800 mb-8">
+                Get in Touch
+              </h2>
+
               <div className="space-y-6">
                 <Card className="bg-gradient-to-br from-red-50 to-red-100 border-0 shadow-lg">
                   <CardContent className="p-6">
@@ -117,9 +121,15 @@ const Contact = () => {
                         <Phone className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-800 mb-1">Phone</h3>
-                        <p className="text-gray-600">Main Office: +92 307 930 2311</p>
-                        <p className="text-gray-600">Admissions: +92 307 930 2311</p>
+                        <h3 className="font-semibold text-gray-800 mb-1">
+                          Phone
+                        </h3>
+                        <p className="text-gray-600">
+                          Main Office: {phoneNumber}
+                        </p>
+                        <p className="text-gray-600">
+                          Girls Section: 0946-790-151
+                        </p>
                       </div>
                     </div>
                   </CardContent>
@@ -132,9 +142,11 @@ const Contact = () => {
                         <Mail className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-800 mb-1">Email</h3>
-                        <p className="text-gray-600">info@sgs.edu.pk</p>
-                        <p className="text-gray-600">admissions@sgs.edu.pk</p>
+                        <h3 className="font-semibold text-gray-800 mb-1">
+                          Email
+                        </h3>
+                        <p className="text-gray-600">{emailAddress}</p>
+                        <p className="text-gray-600">{emailAddress}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -147,9 +159,12 @@ const Contact = () => {
                         <MapPin className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-800 mb-1">Address</h3>
+                        <h3 className="font-semibold text-gray-800 mb-1">
+                          Address
+                        </h3>
                         <p className="text-gray-600">
-                          WCRJ+WW7, Sambat Cham<br />
+                          {location}
+                          <br />
                           Pakistan
                         </p>
                       </div>
@@ -164,9 +179,12 @@ const Contact = () => {
                         <Clock className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-gray-800 mb-1">Office Hours</h3>
-                        <p className="text-gray-600">Monday - Friday: 8:00 AM - 5:00 PM</p>
-                        <p className="text-gray-600">Saturday: 9:00 AM - 2:00 PM</p>
+                        <h3 className="font-semibold text-gray-800 mb-1">
+                          Office Hours
+                        </h3>
+                        <p className="text-gray-600">
+                          Monday - Saturday: 8:00 AM - 4:00 PM
+                        </p>
                         <p className="text-gray-600">Sunday: Closed</p>
                       </div>
                     </div>
@@ -181,13 +199,18 @@ const Contact = () => {
             <AnimatedSection>
               <Card className="bg-white border-0 shadow-xl">
                 <CardHeader>
-                  <CardTitle className="text-2xl font-bold text-gray-800">Send us a Message</CardTitle>
+                  <CardTitle className="text-2xl font-bold text-gray-800">
+                    Send us a Message
+                  </CardTitle>
                 </CardHeader>
                 <CardContent className="p-8">
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="name" className="text-gray-700 font-medium">
+                        <Label
+                          htmlFor="name"
+                          className="text-gray-700 font-medium"
+                        >
                           Full Name *
                         </Label>
                         <Input
@@ -202,7 +225,10 @@ const Contact = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="email" className="text-gray-700 font-medium">
+                        <Label
+                          htmlFor="email"
+                          className="text-gray-700 font-medium"
+                        >
                           Email Address *
                         </Label>
                         <Input
@@ -220,7 +246,10 @@ const Contact = () => {
 
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="phone" className="text-gray-700 font-medium">
+                        <Label
+                          htmlFor="phone"
+                          className="text-gray-700 font-medium"
+                        >
                           Phone Number
                         </Label>
                         <Input
@@ -234,7 +263,10 @@ const Contact = () => {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="subject" className="text-gray-700 font-medium">
+                        <Label
+                          htmlFor="subject"
+                          className="text-gray-700 font-medium"
+                        >
                           Subject
                         </Label>
                         <Input
@@ -250,7 +282,10 @@ const Contact = () => {
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="message" className="text-gray-700 font-medium">
+                      <Label
+                        htmlFor="message"
+                        className="text-gray-700 font-medium"
+                      >
                         Message *
                       </Label>
                       <Textarea
@@ -264,9 +299,9 @@ const Contact = () => {
                       />
                     </div>
 
-                    <Button 
-                      type="submit" 
-                      className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white py-3 text-lg"
+                    <Button
+                      type="submit"
+                      className="w-full bg-gradient-to-r from-[#700000] to-[#900000] hover:from-red-600 hover:to-red-700 text-white py-3 text-lg"
                     >
                       <Send className="mr-2 h-5 w-5" />
                       Send Message
